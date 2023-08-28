@@ -5,6 +5,7 @@ import Register from "./pages/Register";
 import Login from "./pages/Login";
 import Cart from "./pages/Cart";
 import Employee from "./components/inventoryofproducts";
+import Dashboard from "./components/Dashboard";
 import {
   BrowserRouter as Router,
   Switch,
@@ -12,8 +13,6 @@ import {
   Redirect,
 } from "react-router-dom";
 import Addproducts from "./components/Addproducts";
-
-
 
 const App = () => {
   const user = false;
@@ -36,11 +35,14 @@ const App = () => {
         <Route path="/register">
           {user ? <Redirect to="/" /> : <Register />}
         </Route>
-        <Route path='/inventory'>
+        <Route path="/inventory">
           <Employee></Employee>
         </Route>
-        <Route path='/addproducts'>
-         <Addproducts></Addproducts>
+        <Route path="/addproducts">
+          <Addproducts></Addproducts>
+        </Route>
+        <Route path="/manager/dashboard">
+          <Dashboard></Dashboard>
         </Route>
       </Switch>
     </Router>
