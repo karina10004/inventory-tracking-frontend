@@ -77,9 +77,9 @@ import styled from "styled-components";
           <Icon>
             <SearchOutlinedIcon />
           </Icon>
-          <Icon>
+          {/* <Icon>
             <FavoriteBorderOutlinedIcon />
-          </Icon>
+          </Icon> */}
         </Info>
       </Container>
     );

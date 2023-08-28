@@ -40,23 +40,23 @@ const ProductList = () => {
   return (
     <Container>
       <Navbar />
-      <Announcement />
-      <Title>Dresses</Title>
+      {/* <Announcement /> */}
+      <Title>Products</Title>
       <FilterContainer>
         <Filter>
           <FilterText>Filter Products:</FilterText>
           <Select>
             <Option disabled selected>
-              Color
+              category
             </Option>
-            <Option>White</Option>
-            <Option>Black</Option>
-            <Option>Red</Option>
-            <Option>Blue</Option>
-            <Option>Yellow</Option>
-            <Option>Green</Option>
+            <Option>food</Option>
+            <Option>something</Option>
+            <Option>something</Option>
+            <Option>something</Option>
+            <Option>something</Option>
+            <Option>something</Option>
           </Select>
-          <Select>
+          {/* <Select>
             <Option disabled selected>
               Size
             </Option>
@@ -65,7 +65,7 @@ const ProductList = () => {
             <Option>M</Option>
             <Option>L</Option>
             <Option>XL</Option>
-          </Select>
+          </Select> */}
         </Filter>
         <Filter>
           <FilterText>Sort Products:</FilterText>
@@ -77,7 +77,7 @@ const ProductList = () => {
         </Filter>
       </FilterContainer>
       <Products />
-      <Newsletter />
+      {/* <Newsletter /> */}
       <Footer />
     </Container>
   );

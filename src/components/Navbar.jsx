@@ -3,7 +3,7 @@ import React from "react";
 import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
 import SearchIcon from '@mui/icons-material/Search';
 import { styled } from 'styled-components';
-import { Link } from 'react-router-dom/cjs/react-router-dom';
+import { Link } from 'react-router-dom';
 
 const Container = styled.div`
   height: 60px;
@@ -79,7 +79,9 @@ const Navbar = () => {
           </SearchContainer>
         </Left>
         <Center>
-          <Logo>KARINA</Logo>
+        <Link to='../' style = {{ textDecoration: "none" }}>
+          <Logo>Group - 25</Logo>
+        </Link>
         </Center>
         <Right>
           <Link to = "/register" style = {{ textDecoration: "none" }}>
@@ -88,13 +90,13 @@ const Navbar = () => {
           <Link to = "/login" style = {{ textDecoration: "none" }}>
             <MenuItem>SIGN IN</MenuItem>
           </Link>
-          <MenuItem>
+          {/* <MenuItem>
             <Badge badgeContent={4} color="primary">
               <Link to = "/cart">
                 <ShoppingCartOutlinedIcon />
               </Link>
             </Badge>
-          </MenuItem>
+          </MenuItem> */}
         </Right>
       </Wrapper>
     </Container>
