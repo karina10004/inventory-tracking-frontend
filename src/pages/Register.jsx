@@ -1,6 +1,7 @@
 import styled from "styled-components";
-import Navbar from "../components/Navbar";
-
+// import Navbar from "../components/Navbar";
+import { Link } from "react-router-dom";
+import { useState } from "react";
 
 const Container = styled.div`
   width: 100vw;
@@ -21,7 +22,6 @@ const Wrapper = styled.div`
   width: 40%;
   padding: 20px;
   background-color: white;
-  
 `;
 
 const Title = styled.h1`
@@ -46,33 +46,99 @@ const Agreement = styled.span`
   margin: 20px 0px;
 `;
 
+const SmallWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
 const Button = styled.button`
-  width: 40%;
+  width: 50%;
   border: none;
   padding: 15px 20px;
   background-color: teal;
   color: white;
   cursor: pointer;
+  /* display: block; */
+  flex: 1;
+`;
+
+const NavLink = styled.a`
+  margin: 5px 0px;
+  font-size: 12px;
+  text-decoration: underline;
+  cursor: pointer;
+  display: block;
+  flex: 1;
 `;
 
 const Register = () => {
+  const [name, setName] = useState("");
+  const [user_name, setUser_name] = useState("");
+  const [password, setPassword] = useState("");
+  const [address, setAddress] = useState("");
+  const [email, setEmail] = useState("");
+  const [role, setRole] = useState("");
+  const [phone, setPhone] = useState("");
+
   return (
     <Container>
       {/* <Navbar></Navbar> */}
       <Wrapper>
         <Title>CREATE AN ACCOUNT</Title>
         <Form>
-          <Input placeholder="name" />
-          <Input placeholder="last name" />
-          <Input placeholder="username" />
-          <Input placeholder="email" />
-          <Input placeholder="password" />
-          <Input placeholder="confirm password" />
+          <Input
+            placeholder="name"
+            type="text"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+          />
+          <Input
+            placeholder="username"
+            type="text"
+            value={user_name}
+            onChange={(e) => setUser_name(e.target.value)}
+          />
+          <Input
+            placeholder="email"
+            type="text"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
+          <Input
+            placeholder="password"
+            type="text"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+          <Input
+            placeholder="role"
+            type="text"
+            value={role}
+            onChange={(e) => setRole(e.target.value)}
+          ></Input>
+          <Input
+            placeholder="phone"
+            type="text"
+            value={phone}
+            onChange={(e) => setPhone(e.target.value)}
+          ></Input>
+          <Input
+            placeholder="address"
+            type="text"
+            value={address}
+            onChange={(e) => setAddress(e.target.value)}
+          />
           <Agreement>
             By creating an account, I consent to the processing of my personal
             data in accordance with the <b>PRIVACY POLICY</b>
           </Agreement>
-          <Button>CREATE</Button>
+          <SmallWrapper>
+            <Button>CREATE</Button>
+            <Link to="/login" style={{ textDecoration: "none" }}>
+              <NavLink style={{ textDecoration: "none" }}>
+                ALREADY HAVE AN ACCOUNT!! LOGIN
+              </NavLink>
+            </Link>
+          </SmallWrapper>
         </Form>
       </Wrapper>
     </Container>

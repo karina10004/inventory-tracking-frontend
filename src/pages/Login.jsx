@@ -1,5 +1,5 @@
 import styled from "styled-components";
-
+import { Link } from "react-router-dom";
 
 const Container = styled.div`
   width: 100vw;
@@ -20,7 +20,6 @@ const Wrapper = styled.div`
   width: 25%;
   padding: 20px;
   background-color: white;
-  
 `;
 
 const Title = styled.h1`
@@ -50,7 +49,7 @@ const Button = styled.button`
   margin-bottom: 10px;
 `;
 
-const Link = styled.a`
+const NavLink = styled.a`
   margin: 5px 0px;
   font-size: 12px;
   text-decoration: underline;
@@ -66,8 +65,11 @@ const Login = () => {
           <Input placeholder="username" />
           <Input placeholder="password" />
           <Button>LOGIN</Button>
-          <Link>DO NOT YOU REMEMBER THE PASSWORD?</Link>
-          <Link>CREATE A NEW ACCOUNT</Link>
+          <Link to="/register" style={{ textDecoration: "none" }}>
+            <NavLink style={{ textDecoration: "none" }}>
+              CREATE A NEW ACCOUNT
+            </NavLink>
+          </Link>
         </Form>
       </Wrapper>
     </Container>
