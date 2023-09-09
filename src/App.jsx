@@ -4,8 +4,16 @@ import ProductList from "./pages/ProductList";
 import Register from "./pages/Register";
 import Login from "./pages/Login";
 import Cart from "./pages/Cart";
-import Employee from "./components/inventoryofproducts";
-import Dashboard from "./components/Dashboard";
+import Inventory from "./components/inventoryofproducts";
+// import Dashboard from "./components/Dashboard";
+import Updateproduct from "./components/UpdateProduct";
+import Customer_Dashboard from "./components/user";
+import Profile from "./components/Profile";
+// import Productmanager from "./components/productmanager";
+import Orders from "./components/vieworders";
+import Productmanager from "./components/manager-products";
+import Manager from "./components/managers";
+import Dashboard from "./components/manager-menu";
 import {
   BrowserRouter as Router,
   Switch,
@@ -20,7 +28,8 @@ const App = () => {
     <Router>
       <Switch>
         <Route exact path="/">
-          <Home />
+          {/* <Login></Login> */}
+          <Dashboard></Dashboard>
         </Route>
         <Route path="/products/:category">
           <ProductList />
@@ -36,13 +45,34 @@ const App = () => {
           {user ? <Redirect to="/" /> : <Register />}
         </Route>
         <Route path="/inventory">
-          <Employee></Employee>
+          <Inventory></Inventory>
         </Route>
         <Route path="/addproducts">
           <Addproducts></Addproducts>
         </Route>
         <Route path="/manager/dashboard">
           <Dashboard></Dashboard>
+        </Route>
+        <Route path="/update/product/:product_id">
+          <Updateproduct></Updateproduct>
+        </Route>
+        <Route path="/home">
+          <Home></Home>
+        </Route>
+        <Route path="/user/home">
+          <Customer_Dashboard></Customer_Dashboard>
+        </Route>
+        <Route path="/userprofile">
+          <Profile></Profile>
+        </Route>
+        <Route path="/placeorder">
+          <Manager></Manager>
+        </Route>
+        <Route path="/orders">
+          <Orders></Orders>
+        </Route>
+        <Route path="/managerproducts/:manager_id">
+          <Productmanager></Productmanager>
         </Route>
       </Switch>
     </Router>

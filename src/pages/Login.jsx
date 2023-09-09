@@ -1,5 +1,7 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import { useState } from "react";
+import { useHistory } from "react-router-dom";
 
 const Container = styled.div`
   width: 100vw;
@@ -56,20 +58,73 @@ const NavLink = styled.a`
   cursor: pointer;
 `;
 
+const Message = styled.div`
+  margin: 5px 0px;
+  font-size: 12px;
+`;
+
 const Login = () => {
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [message, setMessage] = useState("");
+  const history = useHistory();
+  const handleClick = async (e) => {
+    e.preventDefault();
+    try {
+      const res = await fetch("http://localhost:8080/api/v1/user/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          user_name: username,
+          password: password,
+        }),
+      });
+      const resJson = await res.json();
+      if (res.status === 200) {
+        console.log("authorized");
+        const token = resJson.access_token;
+        localStorage.setItem("access_token", token);
+        if (resJson.role === "manager") {
+          history.push("/manager/dashboard");
+        } else {
+          history.push("/home");
+        }
+      } else {
+        setMessage("PLEASE ENTER VALID CREDENTIALS.");
+        console.log("not authorized");
+        console.log(message);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <Container>
       <Wrapper>
         <Title>SIGN IN</Title>
         <Form>
-          <Input placeholder="username" />
-          <Input placeholder="password" />
-          <Button>LOGIN</Button>
+          <Input
+            placeholder="username"
+            type="text"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+          />
+          <Input
+            placeholder="password"
+            type="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+          <Button onClick={handleClick}>LOGIN</Button>
           <Link to="/register" style={{ textDecoration: "none" }}>
             <NavLink style={{ textDecoration: "none" }}>
               CREATE A NEW ACCOUNT
             </NavLink>
           </Link>
+          <Message> {message} </Message>
         </Form>
       </Wrapper>
     </Container>
