@@ -4,8 +4,10 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import Home from "./Dashboard_home";
 import { Link } from "react-router-dom/cjs/react-router-dom";
 import Employee from "./inventoryofproducts";
+import Profile from "./Profile";
+import Productmanager from "./manager-products";
 
-function Dashboard() {
+function Customer_Dashboard() {
   return (
     <div className="container-fluid">
       <div className="row flex-nowrap">
@@ -16,7 +18,7 @@ function Dashboard() {
               className="d-flex align-items-center pb-3 mb-md-1 mt-md-3 me-md-auto text-white text-decoration-none"
             >
               <span className="fs-5 fw-bolder d-none d-sm-inline">
-                Admin Dashboard
+                User Dashboard
               </span>
             </a>
             <ul
@@ -27,22 +29,22 @@ function Dashboard() {
                 <i className="fs-4 bi-speedometer2"></i>{" "}
                 <span className="ms-1 d-none d-sm-inline">Dashboard</span>
               </li>
-              <Link to="/inventory" style={{ textDecoration: "none" }}>
+              <Link to="/orders" style={{ textDecoration: "none" }}>
                 <li>
                   <i className="fs-4 bi-people"></i>{" "}
-                  <span className="ms-1 d-none d-sm-inline">
-                    View inventory
-                  </span>
+                  <span className="ms-1 d-none d-sm-inline">View orders</span>
                 </li>
               </Link>
-              <li>
-                <i className="fs-4 bi-person"></i>{" "}
-                <span className="ms-1 d-none d-sm-inline">Profile</span>
-              </li>
-              <Link to="/addproducts" style={{ textDecoration: "none" }}>
+              <Link to="/userprofile" style={{ textDecoration: "none" }}>
+                <li>
+                  <i className="fs-4 bi-person"></i>{" "}
+                  <span className="ms-1 d-none d-sm-inline">Profile</span>
+                </li>
+              </Link>
+              <Link to="/placeorder" style={{ textDecoration: "none" }}>
                 <li>
                   <i className="fs-4 bi-plus-circle"></i>{" "}
-                  <span className="ms-1 d-none d-sm-inline">Addproducts</span>
+                  <span className="ms-1 d-none d-sm-inline">Place Order</span>
                 </li>
               </Link>
               <li>
@@ -58,11 +60,11 @@ function Dashboard() {
           <div className="p-2 d-flex justify-content-center shadow">
             <h4>Inventory Tracking System</h4>
           </div>
-          <Home></Home>
+          {/* <Profile></Profile> */}
         </div>
       </div>
     </div>
   );
 }
 
-export default Dashboard;
+export default Customer_Dashboard;

@@ -2,6 +2,8 @@ import styled from "styled-components";
 // import Navbar from "../components/Navbar";
 import { Link } from "react-router-dom";
 import { useState } from "react";
+// import { Redirect } from "react-router-dom";
+// import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 
 const Container = styled.div`
   width: 100vw;
@@ -70,6 +72,21 @@ const NavLink = styled.a`
   flex: 1;
 `;
 
+const Select = styled.select`
+  flex: 9;
+  min-width: 40%;
+  margin: 20px 10px 0px 0px;
+  padding: 10px;
+`;
+
+const Option = styled.option``;
+const Label = styled.label`
+  flex: 1;
+  min-width: 20%;
+  margin: 20px 0px 0px 0px;
+  padding: 10px;
+`;
+
 const Register = () => {
   const [name, setName] = useState("");
   const [user_name, setUser_name] = useState("");
@@ -78,6 +95,39 @@ const Register = () => {
   const [email, setEmail] = useState("");
   const [role, setRole] = useState("");
   const [phone, setPhone] = useState("");
+  const [message, setMessage] = useState("ALREADY HAVE AN ACCOUNT!! LOGIN");
+
+  // const history = useHistory();
+  const handleClick = async (e) => {
+    e.preventDefault();
+    // const navigate = useNavigate();
+    console.log(user_name);
+    try {
+      console.log(role);
+      const res = await fetch("http://localhost:8080/api/v1/user/register", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          user_name: user_name,
+          fullname: name,
+          password: password,
+          address: address,
+          email: email,
+          role: role,
+          phone: phone,
+        }),
+      });
+      // let resJson = res.json();
+      if (res.status === 200) {
+        // history.push("/login");
+        setMessage("YOU HAVE SUCCESSFULLY REGISTERED. PROCEED TO LOGIN");
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
     <Container>
@@ -87,7 +137,7 @@ const Register = () => {
         <Form>
           <Input
             placeholder="name"
-            type="text"
+            type="varchar"
             value={name}
             onChange={(e) => setName(e.target.value)}
           />
@@ -105,16 +155,11 @@ const Register = () => {
           />
           <Input
             placeholder="password"
-            type="text"
+            type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
-          <Input
-            placeholder="role"
-            type="text"
-            value={role}
-            onChange={(e) => setRole(e.target.value)}
-          ></Input>
+
           <Input
             placeholder="phone"
             type="text"
@@ -127,16 +172,28 @@ const Register = () => {
             value={address}
             onChange={(e) => setAddress(e.target.value)}
           />
+          <Label htmlFor="Category">Role: </Label>
+          <Select
+            id="Category"
+            value={role}
+            onChange={(e) => setRole(e.target.value)}
+          >
+            {/* <Option placeholder="role"></Option> */}
+            <Option value={"manager"}>Manager</Option>
+            <Option value={"customer"}>Customer</Option>
+          </Select>
           <Agreement>
             By creating an account, I consent to the processing of my personal
             data in accordance with the <b>PRIVACY POLICY</b>
           </Agreement>
           <SmallWrapper>
-            <Button>CREATE</Button>
+            {/* <Link to="/login"> */}
+            <Button onClick={handleClick} href="/login">
+              CREATE
+            </Button>
+            {/* </Link> */}
             <Link to="/login" style={{ textDecoration: "none" }}>
-              <NavLink style={{ textDecoration: "none" }}>
-                ALREADY HAVE AN ACCOUNT!! LOGIN
-              </NavLink>
+              <NavLink style={{ textDecoration: "none" }}>{message}</NavLink>
             </Link>
           </SmallWrapper>
         </Form>

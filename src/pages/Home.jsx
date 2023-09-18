@@ -1,24 +1,24 @@
 import React from "react";
 //import Announcement from "../components/Announcement";
 
-//import Footer from "../components/Footer";
-//import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
+import Navbar from "../components/Navbar";
 //import Newsletter from "../components/Newsletter";
 
 //import Slider from "../components/Slider";
-//import Categories from "../components/Categories";
-//import Products from "../components/Products";
+import Categories from "../components/Categories";
+import Products from "../components/Products";
 //import Footer from "../components/Footer";
-import Dashboard from "../components/Dashboard";
+// import Dashboard from "../components/Dashboard";
 //import Dashboard_home from "../components/Dashboard_home";
 //import Inventoryofproducts from "../components/inventoryofproducts"
 //import Addproducts from "../components/Addproducts"
-import Login from "./Login";
+// import Login from "./Login";
 
 const Home = () => {
   return (
     <div>
-      <Login></Login>
+      {/* <Login></Login> */}
       {/* <Dashboard/> */}
       {/*<Addproducts/> */}
       {/*<Inventoryofproducts/> */}
@@ -26,12 +26,12 @@ const Home = () => {
       {/* <Dashboard_home/> */}
 
       {/* <Announcement /> */}
-      {/* <Navbar /> */}
+      <Navbar />
       {/* <Slider /> */}
-      {/*<Categories />*/}
-      {/*<Products/ >*/}
+      <Categories />
+      <Products />
       {/* <Newsletter /> */}
-      {/* <Footer /> */}
+      <Footer />
     </div>
   );
 };
