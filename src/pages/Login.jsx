@@ -89,7 +89,7 @@ const Login = () => {
         if (resJson.role === "manager") {
           history.push("/manager/dashboard");
         } else {
-          history.push("/home");
+          history.push("/user/home");
         }
       } else {
         setMessage("PLEASE ENTER VALID CREDENTIALS.");

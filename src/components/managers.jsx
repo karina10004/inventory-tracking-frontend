@@ -77,7 +77,8 @@ function Manager() {
                 <thead>
                   <tr>
                     <th>Name</th>
-                    <th>Description</th>
+                    <th>Location</th>
+                    <th>Place Order</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -85,10 +86,11 @@ function Manager() {
                     return (
                       <tr key={index}>
                         <td>{manager.user_name}</td>
+                        <td>{manager.address}</td>
                         <td>
                           <Link
                             to={{
-                              pathname: `/products/${manager.user_id}`,
+                              pathname: `/products/${manager.user_name}`,
                             }}
                           >
                             <AddIcon></AddIcon>

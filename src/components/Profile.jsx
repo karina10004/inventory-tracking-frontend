@@ -1,9 +1,28 @@
 import React from "react";
+import { useState, useEffect } from "react";
 import "bootstrap-icons/font/bootstrap-icons.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import styles from "./Profile.css";
 import { Link } from "react-router-dom";
 function Profile() {
+  const [user, setUser] = useState({});
+
+  const getUser = async () => {
+    const access_token = localStorage.getItem("access_token");
+    const res = await fetch("http://localhost:8080/api/v1/user/mid/user", {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${access_token}`,
+      },
+    });
+    const resJson = await res.json();
+    setUser(resJson);
+  };
+
+  useEffect(() => {
+    getUser();
+  }, []);
+
   return (
     <div>
       <div className="container-fluid">
@@ -68,11 +87,12 @@ function Profile() {
                           src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_640.png"
                           alt="student dp"
                         />
-                        <h3>Asmit Sharma</h3>
+                        <h3>{user.fullname}</h3>
                       </div>
                       <div className="card-body">
                         <p className="mb-0">
-                          <strong className="pr-1">Manager ID:</strong>125
+                          <strong className="pr-1">Manager ID:</strong>
+                          {user.user_id}
                         </p>
                       </div>
                     </div>
@@ -90,27 +110,22 @@ function Profile() {
                           <tr>
                             <th width="30%">Manager id</th>
                             <td width="2%">:</td>
-                            <td>125</td>
+                            <td>{user.user_id}</td>
                           </tr>
                           <tr>
-                            <th width="30%">Year of joining</th>
+                            <th width="30%">Date of joining</th>
                             <td width="2%">:</td>
-                            <td>2020</td>
-                          </tr>
-                          <tr>
-                            <th width="30%">Gender</th>
-                            <td width="2%">:</td>
-                            <td>Female</td>
+                            <td>2023</td>
                           </tr>
                           <tr>
                             <th width="30%">Mobile-number</th>
                             <td width="2%">:</td>
-                            <td>6261429594</td>
+                            <td>{user.phone}</td>
                           </tr>
                           <tr>
                             <th width="30%">email id</th>
                             <td width="2%">:</td>
-                            <td>ABC@gmail.com</td>
+                            <td>{user.email}</td>
                           </tr>
                         </table>
                       </div>
