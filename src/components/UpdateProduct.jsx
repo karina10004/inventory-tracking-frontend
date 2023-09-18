@@ -3,50 +3,81 @@ import { useHistory } from "react-router-dom";
 import "bootstrap-icons/font/bootstrap-icons.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Link } from "react-router-dom";
-import Managermenu from "./manager-menu";
-function Addproducts() {
-  const history = useHistory();
+function Updateproduct() {
   const [name, setName] = useState("");
   const [price, setPrice] = useState(0);
   const [quantity, setQuantity] = useState(0);
   const [threshold, setThreshold] = useState(0);
-  const [category, setCategory] = useState(1);
+  const [category, setCategory] = useState(0);
   const [description, setDescription] = useState("");
   const [categories, setCategories] = useState([]);
+  //   const [product, setProduct] = useState({});
+  const history = useHistory();
 
   const getCategories = async (req, res) => {
     const response = await fetch("http://localhost:8080/api/v1/category");
     const resJson = await response.json();
     setCategories(resJson);
   };
+  const token = localStorage.getItem("access_token");
+  const url = window.location.href;
+  const reqparam = url.split("http://localhost:3000/update/product/")[1];
+
+  const getProduct = async () => {
+    // console.log(reqparam);
+    const res = await fetch(
+      `http://localhost:8080/api/v1/product/${reqparam}`,
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+    if (res.status === 200) {
+      const resJson = await res.json();
+      //   console.log(resJson);
+      setName(resJson.product_name);
+      setDescription(resJson.description);
+      setPrice(resJson.price);
+      setQuantity(resJson.quantity);
+      setThreshold(resJson.threshhold);
+      setCategory(resJson.category_id);
+    }
+  };
 
   useEffect(() => {
     getCategories();
+    getProduct();
   }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const token = localStorage.getItem("access_token");
-      const res = await fetch("http://localhost:8080/api/v1/product/", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-        body: JSON.stringify({
-          product_name: name,
-          description: description,
-          price: price,
-          quantity: quantity,
-          threshold: threshold,
-          category_id: category,
-        }),
-      });
+      // var selected = document.getElementById("Category");
+      // console.log(selected.options[selected.selectedIndex].value);
+      // setCategory(selected.options[selected.selectedIndex].value);
+      const res = await fetch(
+        `http://localhost:8080/api/v1/product/${reqparam}`,
+        {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+          body: JSON.stringify({
+            product_name: name,
+            description: description,
+            price: price,
+            quantity: quantity,
+            threshold: threshold,
+            category_id: category,
+          }),
+        }
+      );
       if (res.status === 200) {
+        console.log("updated");
         console.log(category);
         history.push("/inventory");
-        console.log("added");
       } else {
         console.log("some error occured");
       }
@@ -59,8 +90,7 @@ function Addproducts() {
     <div>
       <div className="container-fluid">
         <div className="row flex-nowrap">
-          <Managermenu></Managermenu>
-          {/* <div className="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-dark">
+          <div className="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-dark">
             <div className="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
               <a
                 href="/manager/dashboard"
@@ -104,14 +134,14 @@ function Addproducts() {
                 </li>
               </ul>
             </div>
-          </div> */}
+          </div>
           <div class="col p-0 m-0">
             <div className="p-2 d-flex justify-content-center shadow">
               <h4>Inventory Tracking System</h4>
             </div>
             {/* <Home></Home> */}
             <div className="d-flex flex-column align-items-center pt-4">
-              <h2>Add Products</h2>
+              <h2>Update Product</h2>
               <form class="row g-3 w-50" onSubmit={handleSubmit}>
                 <div class="col-12">
                   <label for="inputName" class="form-label">
@@ -170,19 +200,19 @@ function Addproducts() {
                 <div class="col-12">
                   <label for="Category">Choose category:</label>
                   <select
-                    name="Beauty"
-                    id="Beauty"
+                    name="Category"
+                    id="Category"
                     value={category}
                     onChange={(e) => setCategory(e.target.value)}
                   >
-                    {categories.map((category) => {
-                      console.log(category);
+                    {categories.map((categoryitem) => {
+                      // console.log(category);
                       return (
                         <option
-                          value={category.category_id}
-                          key={category.category_id}
+                          value={categoryitem.category_id}
+                          key={categoryitem.category_id}
                         >
-                          {category.category_name}
+                          {categoryitem.category_name}
                         </option>
                       );
                     })}
@@ -217,7 +247,7 @@ function Addproducts() {
                 </div> */}
                 <div class="col-12">
                   <button type="submit" class="btn btn-primary">
-                    Add
+                    Update
                   </button>
                 </div>
               </form>
@@ -229,4 +259,4 @@ function Addproducts() {
   );
 }
 
-export default Addproducts;
+export default Updateproduct;
