@@ -77,7 +77,7 @@ function Updateproduct() {
       if (res.status === 200) {
         console.log("updated");
         console.log(category);
-        history.push("/inventory");
+        history.push("/manager/dashboard");
       } else {
         console.log("some error occured");
       }

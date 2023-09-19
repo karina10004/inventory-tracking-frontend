@@ -2,12 +2,14 @@ import React from "react";
 import { useState, useEffect } from "react";
 import "bootstrap-icons/font/bootstrap-icons.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-// import AddIcon from "@mui/icons-material/Add";
+import ReceiptIcon from "@mui/icons-material/Receipt";
 import PageviewIcon from "@mui/icons-material/Pageview";
+// import PageviewIcon from '@mui/icons-material/Pageview';
 import { Link } from "react-router-dom";
 function Orders() {
   const [orders, setOrders] = useState([]);
   const [status, setStatus] = useState({});
+  const [url, setUrl] = useState("");
   const getOrders = async () => {
     const token = localStorage.getItem("access_token");
     const res = await fetch("http://localhost:8080/api/v1/orders/order/all", {
@@ -22,6 +24,23 @@ function Orders() {
     if (res.status === 200) {
       setOrders(resJson);
     }
+  };
+
+  const handleInvoiceGeneration = async (order_id) => {
+    const res = await fetch(
+      `http://localhost:8080/api/v1/orders/order/invoice/${order_id}`
+    );
+
+    const blob = await res.blob();
+    const url = window.URL.createObjectURL(blob);
+    setUrl(url);
+
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = `invoice-${order_id}.pdf`;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
   };
   useEffect(() => {
     getOrders();
@@ -112,8 +131,17 @@ function Orders() {
                               pathname: `/order/${order.order_id}`,
                             }}
                           >
-                            <PageviewIcon></PageviewIcon>
+                            <button>
+                              <PageviewIcon></PageviewIcon>
+                            </button>
                           </Link>
+                          <button
+                            onClick={() => {
+                              handleInvoiceGeneration(order.order_id);
+                            }}
+                          >
+                            <ReceiptIcon></ReceiptIcon>
+                          </button>
                         </td>
                       </tr>
                     );
