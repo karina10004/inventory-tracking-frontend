@@ -22,6 +22,7 @@ import {
   Redirect,
 } from "react-router-dom";
 import Addproducts from "./components/Addproducts";
+import Notification from "./components/Notification";
 
 const App = () => {
   const user = false;
@@ -77,6 +78,9 @@ const App = () => {
         </Route>
         <Route path="/products/:user_name">
           <Productmanager></Productmanager>
+        </Route>
+        <Route path="/notification">
+          <Notification></Notification>
         </Route>
       </Switch>
     </Router>

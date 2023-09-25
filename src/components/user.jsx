@@ -6,7 +6,7 @@ import { Link } from "react-router-dom/cjs/react-router-dom";
 import Employee from "./inventoryofproducts";
 import Profile from "./Profile";
 import Productmanager from "./manager-products";
-
+import NotificationsActiveIcon from '@mui/icons-material/NotificationsActive';
 function Customer_Dashboard() {
   return (
     <div className="container-fluid">
@@ -39,6 +39,12 @@ function Customer_Dashboard() {
                 <li>
                   <i className="fs-4 bi-person"></i>{" "}
                   <span className="ms-1 d-none d-sm-inline">Profile</span>
+                </li>
+              </Link>
+              <Link to="/notification" style={{ textDecoration: "none" }}>
+                <li>
+                
+                <span className="ms-1 d-none d-sm-inline"><NotificationsActiveIcon/>Notifications</span>
                 </li>
               </Link>
               <Link to="/placeorder" style={{ textDecoration: "none" }}>

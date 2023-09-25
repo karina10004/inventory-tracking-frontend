@@ -1,13 +1,13 @@
-import React from "react";
+//import React from "react";
 //import Announcement from "../components/Announcement";
 
-import Footer from "../components/Footer";
+//import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
 //import Newsletter from "../components/Newsletter";
-
+import Notification from "../components/Notification";
 //import Slider from "../components/Slider";
-import Categories from "../components/Categories";
-import Products from "../components/Products";
+//import Categories from "../components/Categories";
+//import Products from "../components/Products";
 //import Footer from "../components/Footer";
 // import Dashboard from "../components/Dashboard";
 //import Dashboard_home from "../components/Dashboard_home";
@@ -22,16 +22,15 @@ const Home = () => {
       {/* <Dashboard/> */}
       {/*<Addproducts/> */}
       {/*<Inventoryofproducts/> */}
-
+         <Navbar />
       {/* <Dashboard_home/> */}
-
+         <Notification />
       {/* <Announcement /> */}
-      <Navbar />
       {/* <Slider /> */}
-      <Categories />
-      <Products />
+      {/*<Categories /> */}
+     {/*<Products / >*/}
       {/* <Newsletter /> */}
-      <Footer />
+      {/*<Footer /> */}
     </div>
   );
 };

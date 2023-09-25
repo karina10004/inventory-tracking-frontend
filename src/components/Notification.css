@@ -1,0 +1,18 @@
+/* src/Notification.css */
+/* src/CenteredBox.css */
+.notification {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    height: 150px;
+    width: 400px;
+    
+  }
+  
+  .row {
+    margin-bottom: 10px;
+  }
+  
+  

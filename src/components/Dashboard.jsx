@@ -4,6 +4,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import Home from "./Dashboard_home";
 import { Link } from "react-router-dom/cjs/react-router-dom";
 import Employee from "./inventoryofproducts";
+import NotificationsActiveIcon from '@mui/icons-material/NotificationsActive';
 
 function Dashboard() {
   return (
@@ -43,6 +44,12 @@ function Dashboard() {
                 <li>
                   <i className="fs-4 bi-plus-circle"></i>{" "}
                   <span className="ms-1 d-none d-sm-inline">Addproducts</span>
+                </li>
+              </Link>
+              <Link to="/notification" style={{ textDecoration: "none" }}>
+                <li>
+                
+                <span className="ms-1 d-none d-sm-inline"><NotificationsActiveIcon/>Notifications</span>
                 </li>
               </Link>
               <li>
