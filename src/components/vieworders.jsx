@@ -113,7 +113,7 @@ function Orders() {
                     <th>Order ID</th>
                     <th>Ammount</th>
                     <th>Date</th>
-                    <th>Status</th>
+                    {/* <th>Status</th> */}
                     <th></th>
                   </tr>
                 </thead>
@@ -123,8 +123,8 @@ function Orders() {
                       <tr key={index}>
                         <td>{order.order_id}</td>
                         <td>{order.total_ammount}</td>
-                        <td>{order.order_date}</td>
-                        <td>{status[order.status_id]}</td>
+                        <td>{order.order_date.split("T")[0]}</td>
+                        {/* <td>{status[order.status_id]}</td> */}
                         <td>
                           <Link
                             to={{
