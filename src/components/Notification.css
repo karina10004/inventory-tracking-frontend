@@ -1,18 +1,19 @@
-/* src/Notification.css */
-/* src/CenteredBox.css */
-.notification {
-    background-color: #fff;
-    border: 1px solid #ccc;
-    padding: 20px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-    text-align: center;
-    height: 150px;
-    width: 400px;
-    
-  }
-  
-  .row {
-    margin-bottom: 10px;
-  }
-  
-  
+/* NotificationsPage.css */
+
+.notifications-container {
+  text-align: center; /* Center the notifications horizontally */
+}
+
+.notification-box {
+  border: 1px solid #ccc; /* Add a border around each notification */
+  padding: 10px; /* Add some padding to create spacing */
+  margin: 10px; /* Add margin for separation */
+  list-style: none; /* Remove list item bullets */
+  max-width: 400px; /* Limit the width of each notification box */
+  margin: 0 auto; /* Center the notification boxes horizontally */
+  background-color: #f5f5f5; /* Set a background color for the box */
+}
+
+.notification-content {
+  text-align: left; /* Left-align the content within each notification box */
+}

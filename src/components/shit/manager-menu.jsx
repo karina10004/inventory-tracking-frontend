@@ -1,9 +1,9 @@
 import React, { useEffect } from "react";
 import "bootstrap-icons/font/bootstrap-icons.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-import Home from "./Dashboard_home";
+import Home from "../manager/Dashboard_home";
 import { Link } from "react-router-dom/cjs/react-router-dom";
-import Employee from "./inventoryofproducts";
+import Employee from "../manager/inventoryofproducts";
 
 function Managermenu() {
   return (

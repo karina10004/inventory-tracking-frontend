@@ -1,27 +1,29 @@
 // import Product from "./pages/Product";
-import Home from "./pages/Home";
+import Home from "./pages/shit/Home";
 // import ProductList from "./pages/ProductList";
 import Register from "./pages/Register";
 import Login from "./pages/Login";
 // import Cart from "./pages/Cart";
-import Inventory from "./components/inventoryofproducts";
-import Dashboard from "./components/Dashboard";
-import Updateproduct from "./components/UpdateProduct";
+import Inventory from "./components/manager/inventoryofproducts";
+import Dashboard from "./components/manager/Dashboard";
+import Updateproduct from "./components/manager/UpdateProduct";
 import Customer_Dashboard from "./components/user";
 import Profile from "./components/Profile";
 // import Productmanager from "./components/productmanager";
-import Orders from "./components/vieworders";
-import Productmanager from "./components/manager-products";
-import Manager from "./components/managers";
+import Orders from "./components/customer/vieworders";
+import Productmanager from "./components/customer/manager-products";
+import Manager from "./components/customer/managers";
 // import Dashboard from "./components/manager-menu";
-import Order from "./components/order";
+import Order from "./components/customer/order";
+// import Manager from "./pages/Manager";
+import OrderListManager from "./components/manager/OrderListManager";
 import {
   BrowserRouter as Router,
   Switch,
   Route,
   Redirect,
 } from "react-router-dom";
-import Addproducts from "./components/Addproducts";
+import Addproducts from "./components/manager/Addproducts";
 import Notification from "./components/Notification";
 
 const App = () => {
@@ -58,8 +60,8 @@ const App = () => {
         <Route path="/update/product/:product_id">
           <Updateproduct></Updateproduct>
         </Route>
-        <Route path="/home">
-          <Home></Home>
+        <Route path="/test">
+          <OrderListManager></OrderListManager>
         </Route>
         <Route path="/user/home">
           <Customer_Dashboard></Customer_Dashboard>

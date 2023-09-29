@@ -3,7 +3,7 @@ import { useHistory } from "react-router-dom";
 import "bootstrap-icons/font/bootstrap-icons.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Link } from "react-router-dom";
-import Managermenu from "./manager-menu";
+import Managermenu from "../shit/manager-menu";
 function Addproducts() {
   const history = useHistory();
   const [name, setName] = useState("");
@@ -60,7 +60,7 @@ function Addproducts() {
       <div className="container-fluid">
         <div className="row flex-nowrap">
           <Managermenu></Managermenu>
-          
+
           <div class="col p-0 m-0">
             <div className="p-2 d-flex justify-content-center shadow">
               <h4>Inventory Tracking System</h4>
