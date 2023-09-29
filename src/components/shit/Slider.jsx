@@ -1,9 +1,8 @@
-
 import { useState } from "react";
 import styled from "styled-components";
-import { sliderItems } from "../data";
-import ArrowRightOutlinedIcon from '@mui/icons-material/ArrowRightOutlined';
-import ArrowLeftOutlinedIcon from '@mui/icons-material/ArrowLeftOutlined';
+import { sliderItems } from "../../data";
+import ArrowRightOutlinedIcon from "@mui/icons-material/ArrowRightOutlined";
+import ArrowLeftOutlinedIcon from "@mui/icons-material/ArrowLeftOutlined";
 import { Link } from "react-router-dom/cjs/react-router-dom";
 
 const Container = styled.div`
@@ -12,7 +11,6 @@ const Container = styled.div`
   display: flex;
   position: relative;
   overflow: hidden;
-  
 `;
 
 const Arrow = styled.div`
@@ -105,7 +103,7 @@ const Slider = () => {
             <InfoContainer>
               <Title>{item.title}</Title>
               <Desc>{item.desc}</Desc>
-              <Link to = {`product/${item.id}`}>
+              <Link to={`product/${item.id}`}>
                 <Button>SHOP NOW</Button>
               </Link>
             </InfoContainer>
@@ -113,7 +111,7 @@ const Slider = () => {
         ))}
       </Wrapper>
       <Arrow direction="right" onClick={() => handleClick("right")}>
-        <ArrowRightOutlinedIcon/>
+        <ArrowRightOutlinedIcon />
       </Arrow>
     </Container>
   );

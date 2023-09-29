@@ -1,19 +1,16 @@
-
-import RemoveIcon from '@mui/icons-material/Remove';
-import AddIcon from '@mui/icons-material/Add';
+import RemoveIcon from "@mui/icons-material/Remove";
+import AddIcon from "@mui/icons-material/Add";
 import styled from "styled-components";
-import Announcement from "../components/Announcement";
-import Footer from "../components/Footer";
-import Navbar from "../components/Navbar";
-import Newsletter from "../components/Newsletter";
-
+import Announcement from "../../components/Announcement";
+import Footer from "../../components/Footer";
+import Navbar from "../../components/Navbar";
+import Newsletter from "../../components/Newsletter";
 
 const Container = styled.div``;
 
 const Wrapper = styled.div`
   padding: 50px;
   display: flex;
-  
 `;
 
 const ImgContainer = styled.div`
@@ -24,13 +21,11 @@ const Image = styled.img`
   width: 100%;
   height: 90vh;
   object-fit: cover;
-  
 `;
 
 const InfoContainer = styled.div`
   flex: 1;
   padding: 0px 50px;
-  
 `;
 
 const Title = styled.h1`
@@ -51,7 +46,6 @@ const FilterContainer = styled.div`
   margin: 30px 0px;
   display: flex;
   justify-content: space-between;
- 
 `;
 
 const Filter = styled.div`
@@ -85,7 +79,6 @@ const AddContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
- 
 `;
 
 const AmountContainer = styled.div`
@@ -112,8 +105,8 @@ const Button = styled.button`
   cursor: pointer;
   font-weight: 500;
 
-  &:hover{
-      background-color: #f8f4f4;
+  &:hover {
+    background-color: #f8f4f4;
   }
 `;
 

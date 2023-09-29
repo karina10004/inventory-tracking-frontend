@@ -2,9 +2,9 @@
 //import Announcement from "../components/Announcement";
 
 //import Footer from "../components/Footer";
-import Navbar from "../components/Navbar";
+import Navbar from "../../components/shit/Navbar";
 //import Newsletter from "../components/Newsletter";
-import Notification from "../components/Notification";
+import Notification from "../../components/Notification";
 //import Slider from "../components/Slider";
 //import Categories from "../components/Categories";
 //import Products from "../components/Products";
@@ -22,13 +22,13 @@ const Home = () => {
       {/* <Dashboard/> */}
       {/*<Addproducts/> */}
       {/*<Inventoryofproducts/> */}
-         <Navbar />
+      <Navbar />
       {/* <Dashboard_home/> */}
-         <Notification />
+      <Notification />
       {/* <Announcement /> */}
       {/* <Slider /> */}
       {/*<Categories /> */}
-     {/*<Products / >*/}
+      {/*<Products / >*/}
       {/* <Newsletter /> */}
       {/*<Footer /> */}
     </div>

@@ -2,55 +2,96 @@ import React from "react";
 import { useState, useEffect } from "react";
 import "bootstrap-icons/font/bootstrap-icons.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-import ReceiptIcon from "@mui/icons-material/Receipt";
-import PageviewIcon from "@mui/icons-material/Pageview";
-// import PageviewIcon from '@mui/icons-material/Pageview';
+// import AddIcon from "@mui/icons-material/Add";
+// import PageviewIcon from "@mui/icons-material/Pageview";
 import { Link } from "react-router-dom";
-function Orders() {
-  const [orders, setOrders] = useState([]);
+function Order() {
+  const [order, setOrder] = useState({});
+  const [items, setItems] = useState([]);
+  const [manager, setManager] = useState({});
   const [status, setStatus] = useState({});
-  const [url, setUrl] = useState("");
-  const getOrders = async () => {
-    const token = localStorage.getItem("access_token");
-    const res = await fetch("http://localhost:8080/api/v1/orders/order/all", {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
-      },
-    });
-    const resJson = await res.json();
-    console.log(resJson);
-    if (res.status === 200) {
-      setOrders(resJson);
-    }
-  };
+  const [productNames, setProductNames] = useState({});
 
-  const handleInvoiceGeneration = async (order_id) => {
-    const res = await fetch(
-      `http://localhost:8080/api/v1/orders/order/invoice/${order_id}`
+  const getOrder = async () => {
+    const url = window.location.href;
+    const id = url.split("http://localhost:3000/order/")[1];
+    const res1 = await fetch(
+      `http://localhost:8080/api/v1/orders/order/${id}`,
+      {
+        method: "GET",
+      }
     );
-
-    const blob = await res.blob();
-    const url = window.URL.createObjectURL(blob);
-    setUrl(url);
-
-    const a = document.createElement("a");
-    a.href = url;
-    a.download = `invoice-${order_id}.pdf`;
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
+    const res1Json = await res1.json();
+    setOrder(res1Json);
   };
+
+  const getItems = async () => {
+    const url = window.location.href;
+    const id = url.split("http://localhost:3000/order/")[1];
+    const res1 = await fetch(
+      `http://localhost:8080/api/v1/orders/item/all/${id}`,
+      {
+        method: "GET",
+      }
+    );
+    const res1Json = await res1.json();
+    setItems(res1Json);
+    console.log(items);
+  };
+
+  const getManager = async () => {
+    const manager_id = order.manager_id;
+    const res2 = await fetch(
+      `http://localhost:8080/api/v1/user/id/${manager_id}`,
+      {
+        method: "GET",
+      }
+    );
+    const res2Json = await res2.json();
+    setManager(res2Json);
+  };
+
+  const getProductNames = async () => {
+    items.map(async (item) => {
+      const res = await fetch(
+        `http://localhost:8080/api/v1/product/name/${item.product_id}`,
+        {
+          method: "GET",
+        }
+      );
+      const resJson = await res.json();
+      setProductNames((prevNames) => ({
+        ...prevNames,
+        [item.product_id]: resJson,
+      }));
+    });
+    console.log(productNames);
+  };
+
   useEffect(() => {
-    getOrders();
+    getOrder();
+    getItems();
     setStatus((prevStatus) => ({
       ...prevStatus,
       [1]: "pending",
-      [2]: "shipped",
-      [3]: "delivered",
+      [2]: "manager-confirmation",
+      [3]: "shipped",
+      [4]: "delivered",
     }));
+    // getManager();
   }, []);
+
+  useEffect(() => {
+    getProductNames();
+    // getManager();
+  }, [items]);
+
+  useEffect(() => {
+    if (Object.keys(order).length > 0) {
+      getManager();
+    }
+  }, [order]);
+
   return (
     <div className="container-fluid">
       <div className="row flex-nowrap">
@@ -106,43 +147,32 @@ function Orders() {
           <div>
             {/* List of admin  */}
             <div className="mt-4 px-5 pt-3">
-              <h3>Orders</h3>
+              {/* <h3>Order</h3> */}
+              <h6>OrderID: {order.order_id}</h6>
+              <h6>Ammount: {order.total_ammount}</h6>
+              <h6>Placed to: {manager.fullname}</h6>
+              <h6>Date: {order.order_date}</h6>
+              <h6>Status: {status[order.status_id]}</h6>
               <table className="table">
                 <thead>
                   <tr>
-                    <th>Order ID</th>
-                    <th>Ammount</th>
-                    <th>Date</th>
-                    {/* <th>Status</th> */}
+                    <th>Product ID</th>
+                    <th>Name</th>
+                    <th>Quantity</th>
+                    <th>Price per unit</th>
+                    <th>Subtotal</th>
                     <th></th>
                   </tr>
                 </thead>
                 <tbody>
-                  {orders.map((order, index) => {
+                  {items.map((item, index) => {
                     return (
                       <tr key={index}>
-                        <td>{order.order_id}</td>
-                        <td>{order.total_ammount}</td>
-                        <td>{order.order_date.split("T")[0]}</td>
-                        {/* <td>{status[order.status_id]}</td> */}
-                        <td>
-                          <Link
-                            to={{
-                              pathname: `/order/${order.order_id}`,
-                            }}
-                          >
-                            <button>
-                              <PageviewIcon></PageviewIcon>
-                            </button>
-                          </Link>
-                          <button
-                            onClick={() => {
-                              handleInvoiceGeneration(order.order_id);
-                            }}
-                          >
-                            <ReceiptIcon></ReceiptIcon>
-                          </button>
-                        </td>
+                        <td>{item.product_id}</td>
+                        <td>{productNames[item.product_id]}</td>
+                        <td>{item.quantity}</td>
+                        <td>{item.price_per_unit}</td>
+                        <td>{item.subtotal}</td>
                       </tr>
                     );
                   })}
@@ -156,4 +186,4 @@ function Orders() {
   );
 }
 
-export default Orders;
+export default Order;
