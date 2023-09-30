@@ -161,10 +161,8 @@ function Productmanager() {
                 </li>
               </Link>
               <li>
-                <a href="#" className="nav-link px-0 align-middle text-white">
-                  <i className="fs-4 bi-power"></i>{" "}
-                  <span className="ms-1 d-none d-sm-inline">Logout</span>
-                </a>
+                <i className="fs-4 bi-power"></i>{" "}
+                <span className="ms-1 d-none d-sm-inline">Logout</span>
               </li>
             </ul>
           </div>
@@ -253,7 +251,7 @@ function Productmanager() {
                 </thead>
                 <tbody>
                   {data.map((products, index) => {
-                    if (isItem[products.product_id] != true) {
+                    if (isItem[products.product_id] !== true) {
                       return <></>;
                     }
                     return (
