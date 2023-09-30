@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import "bootstrap-icons/font/bootstrap-icons.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import Managermenu from "../shit/manager-menu";
 function Addproducts() {
   const history = useHistory();

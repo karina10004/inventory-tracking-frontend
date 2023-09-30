@@ -1,5 +1,5 @@
 // import Product from "./pages/Product";
-import Home from "./pages/shit/Home";
+// import Home from "./pages/shit/Home";
 // import ProductList from "./pages/ProductList";
 import Register from "./pages/Register";
 import Login from "./pages/Login";
@@ -7,7 +7,7 @@ import Login from "./pages/Login";
 import Inventory from "./components/manager/inventoryofproducts";
 import Dashboard from "./components/manager/Dashboard";
 import Updateproduct from "./components/manager/UpdateProduct";
-import Customer_Dashboard from "./components/user";
+import CustomerDashboard from "./components/user";
 import Profile from "./components/Profile";
 // import Productmanager from "./components/productmanager";
 import Orders from "./components/customer/vieworders";
@@ -16,7 +16,9 @@ import Manager from "./components/customer/managers";
 // import Dashboard from "./components/manager-menu";
 import Order from "./components/customer/order";
 // import Manager from "./pages/Manager";
-import OrderListManager from "./components/manager/OrderListManager";
+// import OrderListManager from "./components/manager/OrderListManager";
+import RegisterDeliveryMan from "./components/manager/RegisterDeliveryMan";
+import Delivery from "./components/manager/Delivery";
 import {
   BrowserRouter as Router,
   Switch,
@@ -61,10 +63,11 @@ const App = () => {
           <Updateproduct></Updateproduct>
         </Route>
         <Route path="/test">
-          <OrderListManager></OrderListManager>
+          <RegisterDeliveryMan></RegisterDeliveryMan>
+          <Delivery></Delivery>
         </Route>
         <Route path="/user/home">
-          <Customer_Dashboard></Customer_Dashboard>
+          <CustomerDashboard></CustomerDashboard>
         </Route>
         <Route path="/userprofile">
           <Profile></Profile>
