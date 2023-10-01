@@ -16,9 +16,15 @@ import Manager from "./components/customer/managers";
 // import Dashboard from "./components/manager-menu";
 import Order from "./components/customer/order";
 // import Manager from "./pages/Manager";
-// import OrderListManager from "./components/manager/OrderListManager";
+import OrderListManager from "./components/manager/OrderListManager";
 import RegisterDeliveryMan from "./components/manager/RegisterDeliveryMan";
 import Delivery from "./components/manager/Delivery";
+import ManagerNotif from "./components/manager/ManagerNotif";
+import DeliveryHome from "./components/delivery man/DeliveryHome";
+import DeliveryLogin from "./components/delivery man/DeliveryLogin";
+import DeliveryNotif from "./components/delivery man/DeliveryNotif";
+import ActiveOrders from "./components/delivery man/ActiveOrders";
+import OrderHistory from "./components/delivery man/OrderHistory";
 import {
   BrowserRouter as Router,
   Switch,
@@ -63,8 +69,7 @@ const App = () => {
           <Updateproduct></Updateproduct>
         </Route>
         <Route path="/test">
-          <RegisterDeliveryMan></RegisterDeliveryMan>
-          <Delivery></Delivery>
+          <DeliveryLogin></DeliveryLogin>
         </Route>
         <Route path="/user/home">
           <CustomerDashboard></CustomerDashboard>
@@ -84,8 +89,29 @@ const App = () => {
         <Route path="/products/:user_name">
           <Productmanager></Productmanager>
         </Route>
-        <Route path="/notification">
-          <Notification></Notification>
+        <Route path="/manager/notification">
+          <ManagerNotif></ManagerNotif>
+        </Route>
+        <Route path="/manager/orders">
+          <OrderListManager></OrderListManager>
+        </Route>
+        <Route path="/shiporders">
+          <Delivery></Delivery>
+        </Route>
+        <Route path="/adddeliveryman">
+          <RegisterDeliveryMan></RegisterDeliveryMan>
+        </Route>
+        <Route path="/delivery/dashboard">
+          <DeliveryHome></DeliveryHome>
+        </Route>
+        <Route path="/shipped/orders">
+          <ActiveOrders></ActiveOrders>
+        </Route>
+        <Route path="/history/order">
+          <OrderHistory></OrderHistory>
+        </Route>
+        <Route path="/delivery/notification">
+          <DeliveryNotif></DeliveryNotif>
         </Route>
       </Switch>
     </Router>

@@ -6,7 +6,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 // import Employee from "./inventoryofproducts";
 // import NotificationsActiveIcon from "@mui/icons-material/NotificationsActive";
 import PageviewIcon from "@mui/icons-material/Pageview";
-import Managermenu from "../shit/manager-menu";
+import Managermenu from "./manager-menu";
 
 function OrderListManager() {
   const [orders, setOrders] = useState([]);

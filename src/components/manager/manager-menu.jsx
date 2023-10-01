@@ -5,6 +5,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { Link } from "react-router-dom/cjs/react-router-dom";
 // import Employee from "../manager/inventoryofproducts";]
 import NotificationsActiveIcon from "@mui/icons-material/NotificationsActive";
+import ManIcon from "@mui/icons-material/Man";
 
 function Managermenu() {
   return (
@@ -42,12 +43,34 @@ function Managermenu() {
               <span className="ms-1 d-none d-sm-inline">Addproducts</span>
             </li>
           </Link>
-          <Link to="/notification" style={{ textDecoration: "none" }}>
+          <Link to="/manager/notification" style={{ textDecoration: "none" }}>
             <li>
               <i className="fs-4">
                 <NotificationsActiveIcon></NotificationsActiveIcon>{" "}
               </i>
               <span className="ms-1 d-none d-sm-inline">Notifications</span>
+            </li>
+          </Link>
+          <Link to="/adddeliveryman" style={{ textDecoration: "none" }}>
+            <li>
+              <i className="fs-4">
+                <ManIcon></ManIcon>{" "}
+              </i>
+              <span className="ms-1 d-none d-sm-inline">
+                Register Delivery Man
+              </span>
+            </li>
+          </Link>
+          <Link to="/shiporders" style={{ textDecoration: "none" }}>
+            <li>
+              <i className="fs-4 bi-truck"> </i>{" "}
+              <span className="ms-1 d-none d-sm-inline">Ship Orders</span>
+            </li>
+          </Link>
+          <Link to="/manager/orders" style={{ textDecoration: "none" }}>
+            <li>
+              <i className="fs-4 bi-list-ul"> </i>{" "}
+              <span className="ms-1 d-none d-sm-inline">Orders</span>
             </li>
           </Link>
           <li>

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import SystemUpdateAltSharpIcon from "@mui/icons-material/SystemUpdateAltSharp";
 import DeleteOutlineSharpIcon from "@mui/icons-material/DeleteOutlineSharp";
-import Managermenu from "../shit/manager-menu";
+import Managermenu from "./manager-menu";
 
 function Inventory() {
   const [data, setData] = useState([]);

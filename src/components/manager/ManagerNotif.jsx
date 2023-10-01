@@ -1,13 +1,13 @@
 import React from "react";
 import "bootstrap-icons/font/bootstrap-icons.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-import Home from "./Dashboard_home";
 // import { Link } from "react-router-dom/cjs/react-router-dom";
 // import Employee from "./inventoryofproducts";
 // import NotificationsActiveIcon from "@mui/icons-material/NotificationsActive";
+import NotificationsPage from "../Notification";
 import Managermenu from "./manager-menu";
 
-function Dashboard() {
+function ManagerNotif() {
   return (
     <div className="container-fluid">
       <div className="row flex-nowrap">
@@ -16,11 +16,11 @@ function Dashboard() {
           <div className="p-2 d-flex justify-content-center shadow">
             <h4>Inventory Tracking System</h4>
           </div>
-          <Home></Home>
+          <NotificationsPage></NotificationsPage>
         </div>
       </div>
     </div>
   );
 }
 
-export default Dashboard;
+export default ManagerNotif;
