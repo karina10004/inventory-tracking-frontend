@@ -3,7 +3,7 @@ import { useHistory } from "react-router-dom";
 import "bootstrap-icons/font/bootstrap-icons.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 // import { Link } from "react-router-dom";
-import Managermenu from "../shit/manager-menu";
+import Managermenu from "./manager-menu";
 function Addproducts() {
   const history = useHistory();
   const [name, setName] = useState("");

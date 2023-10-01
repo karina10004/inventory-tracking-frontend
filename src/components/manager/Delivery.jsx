@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import DoneIcon from "@mui/icons-material/Done";
 import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
-import Managermenu from "../shit/manager-menu";
+import Managermenu from "./manager-menu";
 import LocalShippingIcon from "@mui/icons-material/LocalShipping";
 
 const Delivery = () => {

@@ -6,7 +6,7 @@ import { useHistory } from "react-router-dom";
 // import { Link } from "react-router-dom/cjs/react-router-dom";
 // import Employee from "./inventoryofproducts";
 // import NotificationsActiveIcon from "@mui/icons-material/NotificationsActive";
-import Managermenu from "../shit/manager-menu";
+import Managermenu from "./manager-menu";
 
 const RegitserDeliveryMan = () => {
   const history = useHistory();
