@@ -1,15 +1,37 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "bootstrap-icons/font/bootstrap-icons.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import DeliveryManDashboardMenu from "./DeliveryManDashboardMenu";
+import { io } from "socket.io-client";
 
 function DeliveryHome() {
+  useEffect(() => {
+    const socket = io("http://localhost:8080");
+    socket.on("connect", () => {
+      console.log(socket.id);
+    });
+
+    const myInterval = setInterval(() => {
+      navigator.geolocation.getCurrentPosition(
+        function (position) {
+          const latitude = position.coords.latitude;
+          const longitude = position.coords.longitude;
+          console.log(`Latitude: ${latitude}, Longitude: ${longitude}`);
+
+          socket.emit("updateLocation", [latitude, longitude]);
+        },
+        (err) => {},
+        { enableHighAccuracy: true }
+      );
+    }, 5000);
+  });
+
   return (
     <div>
       <div className="container-fluid">
         <div className="row flex-nowrap">
           <DeliveryManDashboardMenu></DeliveryManDashboardMenu>
-          <div class="col p-0 m-0">
+          <div className="col p-0 m-0">
             <div className="p-2 d-flex justify-content-center shadow">
               <h4>Inventory Tracking System</h4>
             </div>
