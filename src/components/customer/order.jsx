@@ -2,8 +2,8 @@ import React from "react";
 import { useState, useEffect } from "react";
 import "bootstrap-icons/font/bootstrap-icons.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-// import AddIcon from "@mui/icons-material/Add";
-// import PageviewIcon from "@mui/icons-material/Pageview";
+import { GoogleMap, Marker } from "@react-google-maps/api";
+import { io } from "socket.io-client";
 import { Link } from "react-router-dom";
 function Order() {
   const [order, setOrder] = useState({});
@@ -11,6 +11,15 @@ function Order() {
   const [manager, setManager] = useState({});
   const [status, setStatus] = useState({});
   const [productNames, setProductNames] = useState({});
+  const [coordinates, setCoordinates] = useState({
+    lat: 0,
+    lng: 0,
+  });
+
+  const containerStyle = {
+    width: "400px",
+    height: "400px",
+  };
 
   const getOrder = async () => {
     const url = window.location.href;
@@ -78,6 +87,23 @@ function Order() {
       [3]: "shipped",
       [4]: "delivered",
     }));
+    const socket = io("http://localhost:8080");
+
+    socket.on("connect", () => {
+      console.log("customer connected");
+    });
+
+    socket.on("locationUpdate", (data) => {
+      console.log("this is on customer page " + data);
+      const newCoords = {
+        lat: data[0],
+        lng: data[1],
+      };
+      console.log(data);
+      console.log(newCoords);
+      setCoordinates(newCoords);
+    });
+
     // getManager();
   }, []);
 
@@ -179,6 +205,16 @@ function Order() {
                 </tbody>
               </table>
             </div>
+          </div>
+          <div>
+            <GoogleMap
+              mapContainerStyle={containerStyle}
+              center={coordinates}
+              zoom={15}
+              googleMapsApiKey="AIzaSyB-Nv4msZO1zHO2Zm34f2x6_FmBXdr3c-Y"
+            >
+              <Marker position={coordinates}></Marker>
+            </GoogleMap>
           </div>
         </div>
       </div>
