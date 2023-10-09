@@ -2,24 +2,13 @@ import React from "react";
 import { useState, useEffect } from "react";
 import "bootstrap-icons/font/bootstrap-icons.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { GoogleMap, Marker } from "@react-google-maps/api";
-import { io } from "socket.io-client";
-import { Link } from "react-router-dom";
+import CustomerMenu from "./CustomerMenu";
 function Order() {
   const [order, setOrder] = useState({});
   const [items, setItems] = useState([]);
   const [manager, setManager] = useState({});
   const [status, setStatus] = useState({});
   const [productNames, setProductNames] = useState({});
-  const [coordinates, setCoordinates] = useState({
-    lat: 0,
-    lng: 0,
-  });
-
-  const containerStyle = {
-    width: "400px",
-    height: "400px",
-  };
 
   const getOrder = async () => {
     const url = window.location.href;
@@ -45,7 +34,7 @@ function Order() {
     );
     const res1Json = await res1.json();
     setItems(res1Json);
-    console.log(items);
+    // console.log(items);
   };
 
   const getManager = async () => {
@@ -87,22 +76,6 @@ function Order() {
       [3]: "shipped",
       [4]: "delivered",
     }));
-    const socket = io("http://localhost:8080");
-
-    socket.on("connect", () => {
-      console.log("customer connected");
-    });
-
-    socket.on("locationUpdate", (data) => {
-      console.log("this is on customer page " + data);
-      const newCoords = {
-        lat: data[0],
-        lng: data[1],
-      };
-      console.log(data);
-      console.log(newCoords);
-      setCoordinates(newCoords);
-    });
 
     // getManager();
   }, []);
@@ -121,51 +94,7 @@ function Order() {
   return (
     <div className="container-fluid">
       <div className="row flex-nowrap">
-        <div className="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-dark">
-          <div className="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
-            <a
-              href="/manager/dashboard"
-              className="d-flex align-items-center pb-3 mb-md-1 mt-md-3 me-md-auto text-white text-decoration-none"
-            >
-              <span className="fs-5 fw-bolder d-none d-sm-inline">
-                User Dashboard
-              </span>
-            </a>
-            <ul
-              className="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start"
-              id="menu"
-            >
-              <li>
-                <i className="fs-4 bi-speedometer2"></i>{" "}
-                <span className="ms-1 d-none d-sm-inline">Dashboard</span>
-              </li>
-              <Link to="/orders" style={{ textDecoration: "none" }}>
-                <li>
-                  <i className="fs-4 bi-people"></i>{" "}
-                  <span className="ms-1 d-none d-sm-inline">View orders</span>
-                </li>
-              </Link>
-              <Link to="/userprofile" style={{ textDecoration: "none" }}>
-                <li>
-                  <i className="fs-4 bi-person"></i>{" "}
-                  <span className="ms-1 d-none d-sm-inline">Profile</span>
-                </li>
-              </Link>
-              <Link to="/placeorder" style={{ textDecoration: "none" }}>
-                <li>
-                  <i className="fs-4 bi-plus-circle"></i>{" "}
-                  <span className="ms-1 d-none d-sm-inline">Place Order</span>
-                </li>
-              </Link>
-              <li>
-                <a className="nav-link px-0 align-middle text-white">
-                  <i className="fs-4 bi-power"></i>{" "}
-                  <span className="ms-1 d-none d-sm-inline">Logout</span>
-                </a>
-              </li>
-            </ul>
-          </div>
-        </div>
+        <CustomerMenu></CustomerMenu>
         <div class="col p-0 m-0">
           <div className="p-2 d-flex justify-content-center shadow">
             <h4>Inventory Tracking System</h4>
@@ -205,16 +134,6 @@ function Order() {
                 </tbody>
               </table>
             </div>
-          </div>
-          <div>
-            <GoogleMap
-              mapContainerStyle={containerStyle}
-              center={coordinates}
-              zoom={15}
-              googleMapsApiKey="AIzaSyB-Nv4msZO1zHO2Zm34f2x6_FmBXdr3c-Y"
-            >
-              <Marker position={coordinates}></Marker>
-            </GoogleMap>
           </div>
         </div>
       </div>

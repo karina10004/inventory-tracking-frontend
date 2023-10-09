@@ -52,15 +52,15 @@ const Button = styled.button`
 `;
 
 const NavLink = styled.a`
-  margin: 5px 0px;
-  font-size: 12px;
+  margin: 8px 0px;
+  font-size: 13px;
   text-decoration: underline;
   cursor: pointer;
 `;
 
 const Message = styled.div`
   margin: 5px 0px;
-  font-size: 12px;
+  font-size: 13px;
 `;
 
 const Login = () => {

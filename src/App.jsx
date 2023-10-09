@@ -5,9 +5,9 @@ import Register from "./pages/Register";
 import Login from "./pages/Login";
 // import Cart from "./pages/Cart";
 import Inventory from "./components/manager/inventoryofproducts";
-import Dashboard from "./components/manager/Dashboard";
+import ManagerDashboard from "./components/manager/Dashboard";
 import Updateproduct from "./components/manager/UpdateProduct";
-import CustomerDashboard from "./components/user";
+import CustomerDashboard from "./components/customer/customerDashboard";
 import Profile from "./components/Profile";
 // import Productmanager from "./components/productmanager";
 import Orders from "./components/customer/vieworders";
@@ -25,6 +25,7 @@ import DeliveryLogin from "./components/delivery man/DeliveryLogin";
 import DeliveryNotif from "./components/delivery man/DeliveryNotif";
 import ActiveOrders from "./components/delivery man/ActiveOrders";
 import OrderHistory from "./components/delivery man/OrderHistory";
+import TrackOrder from "./components/customer/trackOrder";
 import {
   BrowserRouter as Router,
   Switch,
@@ -63,7 +64,7 @@ const App = () => {
           <Addproducts></Addproducts>
         </Route>
         <Route path="/manager/dashboard">
-          <Dashboard></Dashboard>
+          <ManagerDashboard></ManagerDashboard>
         </Route>
         <Route path="/update/product/:product_id">
           <Updateproduct></Updateproduct>
@@ -79,6 +80,9 @@ const App = () => {
         </Route>
         <Route path="/placeorder">
           <Manager></Manager>
+        </Route>
+        <Route path="/trackorder">
+          <TrackOrder></TrackOrder>
         </Route>
         <Route path="/orders">
           <Orders></Orders>
