@@ -17,18 +17,22 @@ function Updateproduct() {
   const history = useHistory();
 
   const getCategories = async () => {
-    const response = await fetch("http://localhost:8080/api/v1/category");
+    const response = await fetch(
+      "https://talented-panama-hat-toad.cyclic.cloud/api/v1/category"
+    );
     const resJson = await response.json();
     setCategories(resJson);
   };
   const token = localStorage.getItem("access_token");
   const url = window.location.href;
-  const reqparam = url.split("http://localhost:3000/update/product/")[1];
+  const reqparam = url.split(
+    "https://inventory-tracking.netlify.app/update/product/"
+  )[1];
 
   const getProduct = async () => {
     // console.log(reqparam);
     const res = await fetch(
-      `http://localhost:8080/api/v1/product/${reqparam}`,
+      `https://talented-panama-hat-toad.cyclic.cloud/api/v1/product/${reqparam}`,
       {
         headers: {
           Authorization: `Bearer ${token}`,
@@ -59,7 +63,7 @@ function Updateproduct() {
       // console.log(selected.options[selected.selectedIndex].value);
       // setCategory(selected.options[selected.selectedIndex].value);
       const res = await fetch(
-        `http://localhost:8080/api/v1/product/${reqparam}`,
+        `https://talented-panama-hat-toad.cyclic.cloud/api/v1/product/${reqparam}`,
         {
           method: "PUT",
           headers: {

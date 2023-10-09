@@ -14,7 +14,7 @@ function OrderListManager() {
   const getOrders = async () => {
     const token = localStorage.getItem("access_token");
     const res = await fetch(
-      "http://localhost:8080/api/v1/orders/order/manager",
+      "https://talented-panama-hat-toad.cyclic.cloud/api/v1/orders/order/manager",
       {
         method: "GET",
         headers: {

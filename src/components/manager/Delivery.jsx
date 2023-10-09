@@ -15,7 +15,7 @@ const Delivery = () => {
 
   const getDeliveryMen = async (req, res) => {
     const response = await fetch(
-      "http://localhost:8080/api/v1/delivery/manager/free",
+      "https://talented-panama-hat-toad.cyclic.cloud/api/v1/delivery/manager/free",
       {
         headers: {
           Authorization: `Bearer ${token}`,
@@ -30,7 +30,7 @@ const Delivery = () => {
 
   const getOrders = async () => {
     const res1 = await fetch(
-      "http://localhost:8080/api/v1/orders/order/manager/2",
+      "https://talented-panama-hat-toad.cyclic.cloud/api/v1/orders/order/manager/2",
       {
         headers: {
           Authorization: `Bearer ${token}`,
@@ -101,7 +101,7 @@ const Delivery = () => {
       );
 
       const res1 = await fetch(
-        `http://localhost:8080/api/v1/delivery/availability/${dm_id}`,
+        `https://talented-panama-hat-toad.cyclic.cloud/api/v1/delivery/availability/${dm_id}`,
         {
           method: "PUT",
           headers: {
@@ -117,7 +117,7 @@ const Delivery = () => {
 
       orders.map(async (order_id) => {
         const res1 = await fetch(
-          `http://localhost:8080/api/v1/orders/order/status/${order_id}`,
+          `https://talented-panama-hat-toad.cyclic.cloud/api/v1/orders/order/status/${order_id}`,
           {
             method: "PUT",
             headers: {
@@ -131,7 +131,7 @@ const Delivery = () => {
         );
 
         const res2 = await fetch(
-          `http://localhost:8080/api/v1/orders/order/delivery/${order_id}`,
+          `https://talented-panama-hat-toad.cyclic.cloud/api/v1/orders/order/delivery/${order_id}`,
           {
             method: "PUT",
             headers: {

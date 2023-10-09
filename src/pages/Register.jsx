@@ -104,21 +104,24 @@ const Register = () => {
     console.log(user_name);
     try {
       console.log(role);
-      const res = await fetch("http://localhost:8080/api/v1/user/register", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          user_name: user_name,
-          fullname: name,
-          password: password,
-          address: address,
-          email: email,
-          role: role,
-          phone: phone,
-        }),
-      });
+      const res = await fetch(
+        "https://talented-panama-hat-toad.cyclic.cloud/api/v1/user/register",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            user_name: user_name,
+            fullname: name,
+            password: password,
+            address: address,
+            email: email,
+            role: role,
+            phone: phone,
+          }),
+        }
+      );
       // let resJson = res.json();
       if (res.status === 200) {
         // history.push("/login");

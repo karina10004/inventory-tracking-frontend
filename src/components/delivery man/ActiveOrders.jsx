@@ -7,7 +7,7 @@ const ActiveOrders = () => {
 
   const getActiveOrders = async () => {
     const res1 = await fetch(
-      "http://localhost:8080/api/v1/orders/order/delivery/3",
+      "https://talented-panama-hat-toad.cyclic.cloud/api/v1/orders/order/delivery/3",
       {
         method: "GET",
         headers: {
@@ -21,7 +21,7 @@ const ActiveOrders = () => {
 
   const handleDeliveredOrder = async (order_id) => {
     const res2 = await fetch(
-      `http://localhost:8080/api/v1/orders/order/status/${order_id}`,
+      `https://talented-panama-hat-toad.cyclic.cloud/api/v1/orders/order/status/${order_id}`,
       {
         method: "PUT",
         headers: {
@@ -39,7 +39,7 @@ const ActiveOrders = () => {
     if (orders.length == 1) {
       const dm_id = 0;
       const res3 = await fetch(
-        `http://localhost:8080/api/v1/delivery/availability/${dm_id}`,
+        `https://talented-panama-hat-toad.cyclic.cloud/api/v1/delivery/availability/${dm_id}`,
         {
           method: "PUT",
           headers: {

@@ -9,13 +9,16 @@ function DeliveryHome() {
   const [deliveryMan, setDeliveryMan] = useState({});
 
   const getDeliveryManInfo = async () => {
-    const res1 = await fetch("http://localhost:8080/api/v1/delivery/", {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
-      },
-    });
+    const res1 = await fetch(
+      "https://talented-panama-hat-toad.cyclic.cloud/api/v1/delivery/",
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
     const res1Json = await res1.json();
     setDeliveryMan(res1Json);
     socket.emit("join room", [res1Json.dm_id]);

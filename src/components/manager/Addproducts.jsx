@@ -15,7 +15,9 @@ function Addproducts() {
   const [categories, setCategories] = useState([]);
 
   const getCategories = async (req, res) => {
-    const response = await fetch("http://localhost:8080/api/v1/category");
+    const response = await fetch(
+      "https://talented-panama-hat-toad.cyclic.cloud/api/v1/category"
+    );
     const resJson = await response.json();
     setCategories(resJson);
   };
@@ -28,21 +30,24 @@ function Addproducts() {
     e.preventDefault();
     try {
       const token = localStorage.getItem("access_token");
-      const res = await fetch("http://localhost:8080/api/v1/product/", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-        body: JSON.stringify({
-          product_name: name,
-          description: description,
-          price: price,
-          quantity: quantity,
-          threshold: threshold,
-          category_id: category,
-        }),
-      });
+      const res = await fetch(
+        "https://talented-panama-hat-toad.cyclic.cloud/api/v1/product/",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+          body: JSON.stringify({
+            product_name: name,
+            description: description,
+            price: price,
+            quantity: quantity,
+            threshold: threshold,
+            category_id: category,
+          }),
+        }
+      );
       if (res.status === 200) {
         console.log(category);
         history.push("/inventory");

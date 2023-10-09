@@ -71,16 +71,19 @@ const Login = () => {
   const handleClick = async (e) => {
     e.preventDefault();
     try {
-      const res = await fetch("http://localhost:8080/api/v1/user/login", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          user_name: username,
-          password: password,
-        }),
-      });
+      const res = await fetch(
+        "https://talented-panama-hat-toad.cyclic.cloud/api/v1/user/login",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            user_name: username,
+            password: password,
+          }),
+        }
+      );
       const resJson = await res.json();
       if (res.status === 200) {
         console.log("authorized");
