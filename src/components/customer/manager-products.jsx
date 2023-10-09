@@ -17,10 +17,12 @@ function Productmanager() {
 
   const getProducts = async () => {
     const url = window.location.href;
-    const reqparam = url.split("http://localhost:3000/products/")[1];
+    const reqparam = url.split(
+      "https://inventory-tracking.netlify.app/products/"
+    )[1];
     const token = localStorage.getItem("access_token");
     const res = await fetch(
-      `http://localhost:8080/api/v1/product/user/${reqparam}`,
+      `https://talented-panama-hat-toad.cyclic.cloud/api/v1/product/user/${reqparam}`,
       {
         headers: {
           Authorization: `Bearer ${token}`,
@@ -63,20 +65,25 @@ function Productmanager() {
   const handlePlaceOrder = async () => {
     const url = window.location.href;
 
-    const name = url.split("http://localhost:3000/products/")[1];
+    const name = url.split(
+      "https://inventory-tracking.netlify.app/products/"
+    )[1];
     let totalAmmount = 0;
     let order_id = 0;
     const token = localStorage.getItem("access_token");
-    const res = await fetch("http://localhost:8080/api/v1/orders/order", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
-      },
-      body: JSON.stringify({
-        manager_name: name,
-      }),
-    });
+    const res = await fetch(
+      "https://talented-panama-hat-toad.cyclic.cloud/api/v1/orders/order",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify({
+          manager_name: name,
+        }),
+      }
+    );
     if (res.status === 200) {
       const resJson = await res.json();
       console.log(resJson);
@@ -84,7 +91,7 @@ function Productmanager() {
       data.map(async (product) => {
         if (isItem[product.product_id] === true) {
           const res = await fetch(
-            `http://localhost:8080/api/v1/orders/item/${resJson[0].order_id}/${product.product_id}`,
+            `https://talented-panama-hat-toad.cyclic.cloud/api/v1/orders/item/${resJson[0].order_id}/${product.product_id}`,
             {
               method: "POST",
               headers: {
@@ -99,7 +106,7 @@ function Productmanager() {
           const res2Json = await res.json();
           totalAmmount = totalAmmount + res2Json;
           const res2 = await fetch(
-            `http://localhost:8080/api/v1/orders/order/ammount/${order_id}`,
+            `https://talented-panama-hat-toad.cyclic.cloud/api/v1/orders/order/ammount/${order_id}`,
             {
               method: "PUT",
               headers: {

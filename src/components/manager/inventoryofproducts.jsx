@@ -9,11 +9,14 @@ function Inventory() {
 
   const getProducts = async () => {
     const token = localStorage.getItem("access_token");
-    const res = await fetch("http://localhost:8080/api/v1/product", {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    });
+    const res = await fetch(
+      "https://talented-panama-hat-toad.cyclic.cloud/api/v1/product",
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
     const resJson = await res.json();
     console.log(resJson);
     setData(resJson);

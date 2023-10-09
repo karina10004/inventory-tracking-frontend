@@ -17,17 +17,20 @@ const RegitserDeliveryMan = () => {
     e.preventDefault();
     try {
       const token = localStorage.getItem("access_token");
-      const res = await fetch("http://localhost:8080/api/v1/delivery/", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-        body: JSON.stringify({
-          fullname: name,
-          phone: phone,
-        }),
-      });
+      const res = await fetch(
+        "https://talented-panama-hat-toad.cyclic.cloud/api/v1/delivery/",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+          body: JSON.stringify({
+            fullname: name,
+            phone: phone,
+          }),
+        }
+      );
       if (res.status === 200) {
         history.push("/inventory");
       } else {

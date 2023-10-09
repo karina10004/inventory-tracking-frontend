@@ -9,7 +9,9 @@ function Manager() {
   const [managers, setManagers] = useState([]);
 
   const getManagers = async () => {
-    const res = await fetch("http://localhost:8080/api/v1/user/managers");
+    const res = await fetch(
+      "https://talented-panama-hat-toad.cyclic.cloud/api/v1/user/managers"
+    );
     const resJson = await res.json();
     setManagers(resJson);
   };

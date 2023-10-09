@@ -12,9 +12,9 @@ function Order() {
 
   const getOrder = async () => {
     const url = window.location.href;
-    const id = url.split("http://localhost:3000/order/")[1];
+    const id = url.split("https://inventory-tracking.netlify.app/order/")[1];
     const res1 = await fetch(
-      `http://localhost:8080/api/v1/orders/order/${id}`,
+      `https://talented-panama-hat-toad.cyclic.cloud/api/v1/orders/order/${id}`,
       {
         method: "GET",
       }
@@ -25,9 +25,9 @@ function Order() {
 
   const getItems = async () => {
     const url = window.location.href;
-    const id = url.split("http://localhost:3000/order/")[1];
+    const id = url.split("https://inventory-tracking.netlify.app/order/")[1];
     const res1 = await fetch(
-      `http://localhost:8080/api/v1/orders/item/all/${id}`,
+      `https://talented-panama-hat-toad.cyclic.cloud/api/v1/orders/item/all/${id}`,
       {
         method: "GET",
       }
@@ -40,7 +40,7 @@ function Order() {
   const getManager = async () => {
     const manager_id = order.manager_id;
     const res2 = await fetch(
-      `http://localhost:8080/api/v1/user/id/${manager_id}`,
+      `https://talented-panama-hat-toad.cyclic.cloud/api/v1/user/id/${manager_id}`,
       {
         method: "GET",
       }
@@ -52,7 +52,7 @@ function Order() {
   const getProductNames = async () => {
     items.map(async (item) => {
       const res = await fetch(
-        `http://localhost:8080/api/v1/product/name/${item.product_id}`,
+        `https://talented-panama-hat-toad.cyclic.cloud/api/v1/product/name/${item.product_id}`,
         {
           method: "GET",
         }
