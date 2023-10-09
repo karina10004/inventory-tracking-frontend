@@ -1,30 +1,44 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import "bootstrap-icons/font/bootstrap-icons.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import DeliveryManDashboardMenu from "./DeliveryManDashboardMenu";
-import { io } from "socket.io-client";
+import socket from "../../socket";
 
 function DeliveryHome() {
-  useEffect(() => {
-    const socket = io("http://localhost:8080");
-    socket.on("connect", () => {
-      console.log(socket.id);
-    });
+  const token = localStorage.getItem("access_token");
+  const [deliveryMan, setDeliveryMan] = useState({});
 
-    const myInterval = setInterval(() => {
+  const getDeliveryManInfo = async () => {
+    const res1 = await fetch("http://localhost:8080/api/v1/delivery/", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    const res1Json = await res1.json();
+    setDeliveryMan(res1Json);
+    socket.emit("join room", [res1Json.dm_id]);
+
+    setInterval(() => {
       navigator.geolocation.getCurrentPosition(
         function (position) {
           const latitude = position.coords.latitude;
           const longitude = position.coords.longitude;
-          console.log(`Latitude: ${latitude}, Longitude: ${longitude}`);
-
-          socket.emit("updateLocation", [latitude, longitude]);
+          console.log(
+            `Latitude: ${latitude}, Longitude: ${longitude}, ${res1Json.dm_id}`
+          );
+          socket.emit("updateLocation", [latitude, longitude, res1Json.dm_id]);
         },
         (err) => {},
         { enableHighAccuracy: true }
       );
     }, 5000);
-  });
+  };
+
+  useEffect(() => {
+    getDeliveryManInfo();
+  }, []);
 
   return (
     <div>
