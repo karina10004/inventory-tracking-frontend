@@ -14,7 +14,7 @@ function Order() {
     const url = window.location.href;
     const id = url.split("https://inventory-tracking.netlify.app/order/")[1];
     const res1 = await fetch(
-      `https://talented-panama-hat-toad.cyclic.cloud/api/v1/orders/order/${id}`,
+      `https://inventory-tracking.onrender.com/api/v1/orders/order/${id}`,
       {
         method: "GET",
       }
@@ -27,7 +27,7 @@ function Order() {
     const url = window.location.href;
     const id = url.split("https://inventory-tracking.netlify.app/order/")[1];
     const res1 = await fetch(
-      `https://talented-panama-hat-toad.cyclic.cloud/api/v1/orders/item/all/${id}`,
+      `https://inventory-tracking.onrender.com/api/v1/orders/item/all/${id}`,
       {
         method: "GET",
       }
@@ -40,7 +40,7 @@ function Order() {
   const getManager = async () => {
     const manager_id = order.manager_id;
     const res2 = await fetch(
-      `https://talented-panama-hat-toad.cyclic.cloud/api/v1/user/id/${manager_id}`,
+      `https://inventory-tracking.onrender.com/api/v1/user/id/${manager_id}`,
       {
         method: "GET",
       }
@@ -52,7 +52,7 @@ function Order() {
   const getProductNames = async () => {
     items.map(async (item) => {
       const res = await fetch(
-        `https://talented-panama-hat-toad.cyclic.cloud/api/v1/product/name/${item.product_id}`,
+        `https://inventory-tracking.onrender.com/api/v1/product/name/${item.product_id}`,
         {
           method: "GET",
         }

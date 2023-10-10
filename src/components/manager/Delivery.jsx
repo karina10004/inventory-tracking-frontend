@@ -15,7 +15,7 @@ const Delivery = () => {
 
   const getDeliveryMen = async (req, res) => {
     const response = await fetch(
-      "https://talented-panama-hat-toad.cyclic.cloud/api/v1/delivery/manager/free",
+      "https://inventory-tracking.onrender.com/api/v1/delivery/manager/free",
       {
         headers: {
           Authorization: `Bearer ${token}`,
@@ -30,7 +30,7 @@ const Delivery = () => {
 
   const getOrders = async () => {
     const res1 = await fetch(
-      "https://talented-panama-hat-toad.cyclic.cloud/api/v1/orders/order/manager/2",
+      "https://inventory-tracking.onrender.com/api/v1/orders/order/manager/2",
       {
         headers: {
           Authorization: `Bearer ${token}`,
@@ -101,7 +101,7 @@ const Delivery = () => {
       );
 
       const res1 = await fetch(
-        `https://talented-panama-hat-toad.cyclic.cloud/api/v1/delivery/availability/${dm_id}`,
+        `https://inventory-tracking.onrender.com/api/v1/delivery/availability/${dm_id}`,
         {
           method: "PUT",
           headers: {
@@ -117,7 +117,7 @@ const Delivery = () => {
 
       orders.map(async (order_id) => {
         const res1 = await fetch(
-          `https://talented-panama-hat-toad.cyclic.cloud/api/v1/orders/order/status/${order_id}`,
+          `https://inventory-tracking.onrender.com/api/v1/orders/order/status/${order_id}`,
           {
             method: "PUT",
             headers: {
@@ -131,7 +131,7 @@ const Delivery = () => {
         );
 
         const res2 = await fetch(
-          `https://talented-panama-hat-toad.cyclic.cloud/api/v1/orders/order/delivery/${order_id}`,
+          `https://inventory-tracking.onrender.com/api/v1/orders/order/delivery/${order_id}`,
           {
             method: "PUT",
             headers: {

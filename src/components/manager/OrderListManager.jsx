@@ -14,7 +14,7 @@ function OrderListManager() {
   const getOrders = async () => {
     const token = localStorage.getItem("access_token");
     const res = await fetch(
-      "https://talented-panama-hat-toad.cyclic.cloud/api/v1/orders/order/manager",
+      "https://inventory-tracking.onrender.com/api/v1/orders/order/manager",
       {
         method: "GET",
         headers: {

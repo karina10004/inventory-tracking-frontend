@@ -72,7 +72,7 @@ const Login = () => {
     e.preventDefault();
     try {
       const res = await fetch(
-        "https://talented-panama-hat-toad.cyclic.cloud/api/v1/user/login",
+        "https://inventory-tracking.onrender.com/api/v1/user/login",
         {
           method: "POST",
           headers: {

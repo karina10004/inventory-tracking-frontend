@@ -14,7 +14,7 @@ function Orders() {
   const getOrders = async () => {
     const token = localStorage.getItem("access_token");
     const res = await fetch(
-      "https://talented-panama-hat-toad.cyclic.cloud/api/v1/orders/order/customer",
+      "https://inventory-tracking.onrender.com/api/v1/orders/order/customer",
       {
         method: "GET",
         headers: {
@@ -32,7 +32,7 @@ function Orders() {
 
   const handleInvoiceGeneration = async (order_id) => {
     const res = await fetch(
-      `https://talented-panama-hat-toad.cyclic.cloud/api/v1/orders/order/invoice/${order_id}`
+      `https://inventory-tracking.onrender.com/api/v1/orders/order/invoice/${order_id}`
     );
 
     const blob = await res.blob();

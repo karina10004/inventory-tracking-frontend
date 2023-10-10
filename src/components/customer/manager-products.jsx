@@ -22,7 +22,7 @@ function Productmanager() {
     )[1];
     const token = localStorage.getItem("access_token");
     const res = await fetch(
-      `https://talented-panama-hat-toad.cyclic.cloud/api/v1/product/user/${reqparam}`,
+      `https://inventory-tracking.onrender.com/api/v1/product/user/${reqparam}`,
       {
         headers: {
           Authorization: `Bearer ${token}`,
@@ -72,7 +72,7 @@ function Productmanager() {
     let order_id = 0;
     const token = localStorage.getItem("access_token");
     const res = await fetch(
-      "https://talented-panama-hat-toad.cyclic.cloud/api/v1/orders/order",
+      "https://inventory-tracking.onrender.com/api/v1/orders/order",
       {
         method: "POST",
         headers: {
@@ -91,7 +91,7 @@ function Productmanager() {
       data.map(async (product) => {
         if (isItem[product.product_id] === true) {
           const res = await fetch(
-            `https://talented-panama-hat-toad.cyclic.cloud/api/v1/orders/item/${resJson[0].order_id}/${product.product_id}`,
+            `https://inventory-tracking.onrender.com/api/v1/orders/item/${resJson[0].order_id}/${product.product_id}`,
             {
               method: "POST",
               headers: {
@@ -106,7 +106,7 @@ function Productmanager() {
           const res2Json = await res.json();
           totalAmmount = totalAmmount + res2Json;
           const res2 = await fetch(
-            `https://talented-panama-hat-toad.cyclic.cloud/api/v1/orders/order/ammount/${order_id}`,
+            `https://inventory-tracking.onrender.com/api/v1/orders/order/ammount/${order_id}`,
             {
               method: "PUT",
               headers: {

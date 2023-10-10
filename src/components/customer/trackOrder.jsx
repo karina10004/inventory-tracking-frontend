@@ -23,7 +23,7 @@ function TrackOrder() {
   const getOrder = async () => {
     console.log(inputOrderId);
     const res1 = await fetch(
-      `https://talented-panama-hat-toad.cyclic.cloud/api/v1/orders/order/${inputOrderId}`,
+      `https://inventory-tracking.onrender.com/api/v1/orders/order/${inputOrderId}`,
       {
         method: "GET",
       }

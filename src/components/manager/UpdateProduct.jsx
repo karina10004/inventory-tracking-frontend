@@ -18,7 +18,7 @@ function Updateproduct() {
 
   const getCategories = async () => {
     const response = await fetch(
-      "https://talented-panama-hat-toad.cyclic.cloud/api/v1/category"
+      "https://inventory-tracking.onrender.com/api/v1/category"
     );
     const resJson = await response.json();
     setCategories(resJson);
@@ -32,7 +32,7 @@ function Updateproduct() {
   const getProduct = async () => {
     // console.log(reqparam);
     const res = await fetch(
-      `https://talented-panama-hat-toad.cyclic.cloud/api/v1/product/${reqparam}`,
+      `https://inventory-tracking.onrender.com/api/v1/product/${reqparam}`,
       {
         headers: {
           Authorization: `Bearer ${token}`,
@@ -63,7 +63,7 @@ function Updateproduct() {
       // console.log(selected.options[selected.selectedIndex].value);
       // setCategory(selected.options[selected.selectedIndex].value);
       const res = await fetch(
-        `https://talented-panama-hat-toad.cyclic.cloud/api/v1/product/${reqparam}`,
+        `https://inventory-tracking.onrender.com/api/v1/product/${reqparam}`,
         {
           method: "PUT",
           headers: {

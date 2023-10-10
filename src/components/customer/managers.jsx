@@ -10,7 +10,7 @@ function Manager() {
 
   const getManagers = async () => {
     const res = await fetch(
-      "https://talented-panama-hat-toad.cyclic.cloud/api/v1/user/managers"
+      "https://inventory-tracking.onrender.com/api/v1/user/managers"
     );
     const resJson = await res.json();
     setManagers(resJson);
