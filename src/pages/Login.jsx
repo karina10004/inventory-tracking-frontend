@@ -127,6 +127,11 @@ const Login = () => {
               CREATE A NEW ACCOUNT
             </NavLink>
           </Link>
+          <Link to="/test" style={{ textDecoration: "none" }}>
+            <NavLink style={{ textDecoration: "none" }}>
+              SIGN IN AS DELIVERY MAN
+            </NavLink>
+          </Link>
           <Message> {message} </Message>
         </Form>
       </Wrapper>
