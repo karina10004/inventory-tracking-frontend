@@ -36,7 +36,7 @@ function DeliveryHome() {
         (err) => {},
         { enableHighAccuracy: true }
       );
-    }, 5000);
+    }, 1000);
   };
 
   useEffect(() => {
