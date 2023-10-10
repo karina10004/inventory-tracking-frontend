@@ -1,6 +1,6 @@
 import { io } from "socket.io-client";
 
-const socket = io("https://talented-panama-hat-toad.cyclic.cloud/");
+const socket = io("https://inventory-tracking.onrender.com/");
 
 socket.on("connect", () => {
   console.log("user connected");
