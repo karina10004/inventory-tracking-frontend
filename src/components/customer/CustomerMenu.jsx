@@ -53,12 +53,12 @@ const CustomerMenu = () => {
               <span className="ms-1 d-none d-sm-inline">Track Order</span>
             </li>
           </Link>
-          <li>
-            <a href="#" className="nav-link px-0 align-middle text-white">
+          <Link to="/" style={{ textDecoration: "none" }}>
+            <li>
               <i className="fs-4 bi-power"></i>{" "}
               <span className="ms-1 d-none d-sm-inline">Logout</span>
-            </a>
-          </li>
+            </li>
+          </Link>
         </ul>
       </div>
     </div>

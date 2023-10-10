@@ -73,10 +73,12 @@ function Managermenu() {
               <span className="ms-1 d-none d-sm-inline">Orders</span>
             </li>
           </Link>
-          <li>
-            <i className="fs-4 bi-power"></i>{" "}
-            <span className="ms-1 d-none d-sm-inline">Logout</span>
-          </li>
+          <Link to="/" style={{ textDecoration: "none" }}>
+            <li>
+              <i className="fs-4 bi-power"></i>{" "}
+              <span className="ms-1 d-none d-sm-inline">Logout</span>
+            </li>
+          </Link>
         </ul>
       </div>
     </div>
