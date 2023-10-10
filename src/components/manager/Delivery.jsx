@@ -23,9 +23,9 @@ const Delivery = () => {
       }
     );
     const resJson = await response.json();
-    const data = resJson.splice(1);
+    // const data = resJson.splice(1);
     // console.log(data);
-    setDeliveryMen(data);
+    setDeliveryMen(resJson);
   };
 
   const getOrders = async () => {
