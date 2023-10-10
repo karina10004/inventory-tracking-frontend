@@ -10,7 +10,7 @@ function Inventory() {
   const getProducts = async () => {
     const token = localStorage.getItem("access_token");
     const res = await fetch(
-      "https://talented-panama-hat-toad.cyclic.cloud/api/v1/product",
+      "https://inventory-tracking.onrender.com/api/v1/product",
       {
         headers: {
           Authorization: `Bearer ${token}`,

@@ -16,7 +16,7 @@ function Addproducts() {
 
   const getCategories = async (req, res) => {
     const response = await fetch(
-      "https://talented-panama-hat-toad.cyclic.cloud/api/v1/category"
+      "https://inventory-tracking.onrender.com/api/v1/category"
     );
     const resJson = await response.json();
     setCategories(resJson);
@@ -31,7 +31,7 @@ function Addproducts() {
     try {
       const token = localStorage.getItem("access_token");
       const res = await fetch(
-        "https://talented-panama-hat-toad.cyclic.cloud/api/v1/product/",
+        "https://inventory-tracking.onrender.com/api/v1/product/",
         {
           method: "POST",
           headers: {

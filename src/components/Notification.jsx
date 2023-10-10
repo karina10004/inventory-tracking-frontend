@@ -16,7 +16,7 @@ function NotificationsPage() {
   const getNotifications = async () => {
     const token = localStorage.getItem("access_token");
     const res = await fetch(
-      "https://talented-panama-hat-toad.cyclic.cloud/api/v1/notif/notifications",
+      "https://inventory-tracking.onrender.com/api/v1/notif/notifications",
       {
         method: "GET",
         headers: {

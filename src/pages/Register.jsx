@@ -105,7 +105,7 @@ const Register = () => {
     try {
       console.log(role);
       const res = await fetch(
-        "https://talented-panama-hat-toad.cyclic.cloud/api/v1/user/register",
+        "https://inventory-tracking.onrender.com/api/v1/user/register",
         {
           method: "POST",
           headers: {

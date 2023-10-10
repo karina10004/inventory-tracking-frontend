@@ -10,7 +10,7 @@ function Profile() {
   const getUser = async () => {
     const access_token = localStorage.getItem("access_token");
     const res = await fetch(
-      "https://talented-panama-hat-toad.cyclic.cloud/api/v1/user/mid/user",
+      "https://inventory-tracking.onrender.com/api/v1/user/mid/user",
       {
         headers: {
           "Content-Type": "application/json",

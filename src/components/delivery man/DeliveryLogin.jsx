@@ -72,7 +72,7 @@ const DeliveryLogin = () => {
     e.preventDefault();
     try {
       const res = await fetch(
-        "https://talented-panama-hat-toad.cyclic.cloud/api/v1/delivery/login",
+        "https://inventory-tracking.onrender.com/api/v1/delivery/login",
         {
           method: "POST",
           headers: {

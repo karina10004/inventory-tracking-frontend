@@ -10,7 +10,7 @@ function DeliveryHome() {
 
   const getDeliveryManInfo = async () => {
     const res1 = await fetch(
-      "https://talented-panama-hat-toad.cyclic.cloud/api/v1/delivery/",
+      "https://inventory-tracking.onrender.com/api/v1/delivery/",
       {
         method: "GET",
         headers: {
